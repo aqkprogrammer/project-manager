@@ -1,0 +1,29 @@
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    {{projectForm.value.id ? "Update" : "Add"}} Project
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="projectForm" (submit)="onSubmit($event)">
+                    <div class="form-group">
+                        <label>Project Name * </label>
+                        <input type="text" class="form-control" placeholder="Project Name" required
+                            formControlName="name" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0"
+                            [disabled]="projectForm.invalid" (click)="onSubmit($event)">
+                            {{projectForm.value.id ? "Update" : "Add"}}
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="closePopup.emit()">
+                            Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

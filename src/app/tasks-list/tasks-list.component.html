@@ -1,0 +1,18 @@
+<ul class="list-group" *ngFor="let task of tasks;let i = index;">
+    <li class="list-group-item list-group-item-light">
+        <p>
+            {{task.name}}
+            <button class="btn btn-sm btn-outline-primary" (click)="editTask(task)" title="Edit Task">
+                <fa-icon [icon]="editIcon" class="fa-solid fa-md"></fa-icon>
+            </button>&nbsp;
+            <button class="btn btn-sm btn-outline-primary" (click)="removeTask(i)" title="Delete Task">
+                <fa-icon [icon]="removeIcon" class="fa-solid fa-md"></fa-icon>
+            </button>
+        </p>
+        <ul class="list-group" *ngFor="let child of task.children">
+            <li class="list-group-item list-group-item-info" *ngIf="child.name">
+                <p>{{child.name}}</p>
+            </li>
+        </ul>
+    </li>
+</ul>
